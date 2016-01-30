@@ -37,7 +37,8 @@ public class slider extends AppCompatActivity {
 
         Firebase.setAndroidContext(this);
         //firebase ref
-        Firebase myFirebaseRef = new Firebase("https://blistering-torch-7311.firebaseio.com/");
+        Firebase myFirebaseRef = new Firebase("https://eventlyforthehack.firebaseio.com/");
+
 
         //Code start here
         ListView eventListView = (ListView)findViewById(R.id.eventList);
