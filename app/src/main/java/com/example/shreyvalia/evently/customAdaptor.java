@@ -26,12 +26,16 @@ import android.widget.Toast;
 public class customAdaptor extends ArrayAdapter<String> {
     String[] events = {};
     String[] dates = {};
+    String[] voteCount = {};
+    String[] description = {};
 
-    customAdaptor(Context context, String[] events, String[] dates) {
+    customAdaptor(Context context, String[] events, String[] dates, String[] voteCount, String[] description) {
         super(context, R.layout.custom_row, events);
 
         this.events = events;
         this.dates = dates;
+        this.voteCount = voteCount;
+        this.description = description;
     }
 
     @Override
@@ -43,11 +47,15 @@ public class customAdaptor extends ArrayAdapter<String> {
         //String singleDate = getItem(position);
         TextView eventText = (TextView) customView.findViewById(R.id.eventTitle);
         TextView eventDate = (TextView) customView.findViewById(R.id.eventDate);
+        TextView voteText = (TextView) customView.findViewById(R.id.voteCount);
+        TextView descriptionText = (TextView) customView.findViewById(R.id.description);
         ImageButton upvoteBtn = (ImageButton) customView.findViewById(R.id.upvote);
         ImageButton downvoteBtn = (ImageButton) customView.findViewById(R.id.downvote);
 
         eventText.setText(events[position]);
         eventDate.setText(dates[position]);
+        voteText.setText(voteCount[position]);
+        descriptionText.setText(description[position]);
         upvoteBtn.setImageResource(R.drawable.up);
         downvoteBtn.setImageResource(R.drawable.down);
 
