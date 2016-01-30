@@ -36,12 +36,11 @@ public class detailActivity extends AppCompatActivity {
             String eventTitle = intent.getStringExtra("eventTitle");
             eventText.setText(eventTitle);
             String date = intent.getStringExtra("date");
-            eventText.setText(date);
+            dateText.setText(date);
             String address = intent.getStringExtra("address");
-            eventText.setText(address);
+            addressText.setText(address);
             String description = intent.getStringExtra("description");
-            eventText.setText(description);
+            descriptionText.setText(description);
         }
     }
-
 }
