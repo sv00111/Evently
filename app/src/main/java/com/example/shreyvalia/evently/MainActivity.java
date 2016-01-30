@@ -1,5 +1,6 @@
 package com.example.shreyvalia.evently;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -64,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-
+            Intent intent = new Intent(getApplicationContext(), FullscreenActivity.class);
+            startActivity(intent);
         }
 
     }
