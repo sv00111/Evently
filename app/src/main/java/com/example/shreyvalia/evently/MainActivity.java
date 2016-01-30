@@ -11,9 +11,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
+
 public class MainActivity extends AppCompatActivity {
 
     Button butt;
+
+    String USERID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -25,6 +29,46 @@ public class MainActivity extends AppCompatActivity {
 
         butt = (Button) findViewById(R.id.button);
         butt.setOnClickListener(new MyClass());
+
+        USERID = null;
+
+        Firebase.setAndroidContext(this);
+        //firebase ref
+         Firebase myFirebaseRef = new Firebase("https://eventlyforthehack.firebaseio.com/");
+//        myFirebaseRef.authAnonymously(myFirebaseRef.authResultHandler("anonymous"));
+
+//            mAuthProgressDialog.show();
+//        myFirebaseRef.authAnonymously(new Firebase.AuthResultHandler() {
+//            @Override
+//            public void onAuthenticated(AuthData authData) {
+//
+//            }
+//
+//            @Override
+//            public void onAuthenticationError(FirebaseError firebaseError) {
+//
+//            }
+//        });
+//
+
+//        myFirebaseRef.authAnonymously(new Firebase.AuthResultHandler() {
+//            @Override
+//            public void onAuthenticated(AuthData authData) {
+//                // we've authenticated this session with your Firebase app
+//               USERID = authData.getUid();
+//                Log.d(" frifjiw", "hfhuf8rf");
+//            }
+//            @Override
+//            public void onAuthenticationError(FirebaseError firebaseError) {
+//                // there was an error
+//            }
+//        });
+//
+//        Log.d("MAIN ACTIVITY USER", " " + USERID);
+
+
+// myFirebaseRef.getAuth()
+//        myFirebaseRef.authAnonymously();
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
