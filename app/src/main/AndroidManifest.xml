@@ -28,7 +28,8 @@
         <activity
             android:name=".slider"
             android:label="@string/title_activity_slider"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SliderActivity"></activity>
     </application>
 
 </manifest>

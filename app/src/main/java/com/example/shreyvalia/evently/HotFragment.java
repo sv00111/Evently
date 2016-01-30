@@ -1,49 +1,39 @@
 package com.example.shreyvalia.evently;
 
-import android.content.Intent;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
+import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
-
-import com.firebase.client.Firebase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class slider extends AppCompatActivity {
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class HotFragment extends Fragment {
+
+    public HotFragment() {
+        // Required empty public constructor
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_slider);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-
-        Firebase.setAndroidContext(this);
-        //firebase ref
-        Firebase myFirebaseRef = new Firebase("https://blistering-torch-7311.firebaseio.com/");
+        View rootView = inflater.inflate(R.layout.fragment_hot, container, false);
 
         //Code start here
-        ListView eventListView = (ListView)findViewById(R.id.eventList);
+        ListView eventListView = (ListView) rootView.findViewById(R.id.eventList);
 
         //ArrayList of maps
         List eventList = new ArrayList();
@@ -98,23 +88,12 @@ public class slider extends AppCompatActivity {
         }
 
         //Display strings array events.
-        //ListAdapter eventAdapter = new customAdaptor(this, eventTitle, eventDate, voteCount, description);
+        ListAdapter eventAdapter = new customAdaptor(getActivity().getApplicationContext(), eventTitle, eventDate, voteCount, description);
 
-        //eventListView.setAdapter(eventAdapter);
+        eventListView.setAdapter(eventAdapter);
 
-        //Make eventListView clickable
-        eventListView.setClickable(true);
-        //eventListView.setOnItemClickListener(new ListClickHandler());
+        // Inflate the layout for this fragment
+        return rootView;
     }
 
-//    public class ListClickHandler implements OnItemClickListener{
-//
-//        @Override
-//        public void onItemClick(AdapterView<?> adapter, View view, int position, long arg3) {
-//            System.out.println("tapped");
-//            Intent intent = new Intent(getApplicationContext(), details.class);
-//            startActivity(intent);
-//        }
-//
-//    }
 }
