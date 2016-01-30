@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+
+import java.text.ParseException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,9 +35,23 @@ public class MainActivity extends AppCompatActivity {
 
         USERID = null;
 
-        Firebase.setAndroidContext(this);
-        //firebase ref
-         Firebase myFirebaseRef = new Firebase("https://eventlyforthehack.firebaseio.com/");
+        node n = new node("2");
+        try {
+            n.setStartDate_Time("13-11-1994 2:01:22 AM");
+            n.setEndDate_Time("13-12-1994 1:11:22 PM");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Log.d("The dateTIme", n.getStartDate_Time());
+
+
+
+
+        Log.d("The ENDdateTIme", n.getEndDate_Time());
+
+
+
 //        myFirebaseRef.authAnonymously(myFirebaseRef.authResultHandler("anonymous"));
 
 //            mAuthProgressDialog.show();
