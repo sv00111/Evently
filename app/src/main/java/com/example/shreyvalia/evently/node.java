@@ -1,5 +1,8 @@
 package com.example.shreyvalia.evently;
 
+import java.sql.Time;
+import java.util.Date;
+
 /**
  * Created by Jenna on 1/30/2016.
  */
@@ -8,9 +11,9 @@ public class node {
     String description;
     // photos (optional)
     String address;
-    private int date;
-    private int sTime;
-    private int eTime;
+    private Date date;
+    private Time sTime;
+    private Time eTime;
     private int nAttend;
     private int max;
     private int rating;
@@ -49,27 +52,27 @@ public class node {
         this.address = address;
     }
 
-    public int getDate() {
+    public Date getDate() {
         return this.date;
     }
 
-    public void setDate(int date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public int getsTime() {
+    public Time getsTime() {
         return this.sTime;
     }
 
-    public void setsTime(int sTime) {
+    public void setsTime(Time sTime) {
         this.sTime = sTime;
     }
 
-    public int geteTime() {
+    public Time geteTime() {
         return this.eTime;
     }
 
-    public void seteTime(int eTime) {
+    public void seteTime(Time eTime) {
         this.eTime = eTime;
     }
 
