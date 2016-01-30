@@ -1,49 +1,42 @@
 package com.example.shreyvalia.evently;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
-
-import com.firebase.client.Firebase;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class slider extends AppCompatActivity {
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class HotFragment extends Fragment {
+
+    public HotFragment() {
+        // Required empty public constructor
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_slider);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-
-        Firebase.setAndroidContext(this);
-        //firebase ref
-        Firebase myFirebaseRef = new Firebase("https://blistering-torch-7311.firebaseio.com/");
+        View rootView = inflater.inflate(R.layout.fragment_hot, container, false);
 
         //Code start here
-        ListView eventListView = (ListView)findViewById(R.id.eventList);
+        ListView eventListView = (ListView) rootView.findViewById(R.id.eventList);
 
         //ArrayList of maps
         List eventList = new ArrayList();
@@ -84,37 +77,44 @@ public class slider extends AppCompatActivity {
         eventMap.put("description", "Ayyyyyyy LMAO.");
         eventList.add(eventMap);
 
+        //Store all displayed text in arrays of string
         String[] eventTitle = new String[eventList.size()];
         String[] eventDate = new String[eventList.size()];
         String[] voteCount = new String[eventList.size()];
         String[] description = new String[eventList.size()];
+        //loop through all array to display all events and details
         for (int i = 0; i < eventList.size(); i ++){
             Map eventObject = (HashMap) eventList.get(i);
             eventTitle[i] = (String) eventObject.get("title");
             eventDate [i] = (String) eventObject.get("date");
             voteCount [i] = (String) eventObject.get("voteCount");
             description [i] = (String) eventObject.get("description");
-            System.out.println(eventTitle[i].toString());
         }
 
         //Display strings array events.
-        //ListAdapter eventAdapter = new customAdaptor(this, eventTitle, eventDate, voteCount, description);
+        ListAdapter eventAdapter = new customAdaptor(getActivity().getApplicationContext(), eventTitle, eventDate, voteCount, description);
 
-        //eventListView.setAdapter(eventAdapter);
+        eventListView.setAdapter(eventAdapter);
 
-        //Make eventListView clickable
-        eventListView.setClickable(true);
-        //eventListView.setOnItemClickListener(new ListClickHandler());
+        eventListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                        //String currentEvent = String.valueOf(parent.getItemAtPosition(position));
+                        //Toast.makeText(getActivity().getApplicationContext(), currentEvent, Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getActivity().getApplicationContext(), detailActivity.class);
+                        intent.putExtra("eventTitle",String.valueOf(parent.getItemAtPosition(position)));
+                        intent.putExtra("date",String.valueOf(parent.getItemAtPosition(position)));
+                        intent.putExtra("description",String.valueOf(parent.getItemAtPosition(position)));
+                        intent.putExtra("address","101 High Street Santa Cruz, CA 95060");
+                        startActivity(intent);
+                    }
+                }
+        );
+        // Inflate the layout for this fragment
+        return rootView;
     }
 
-//    public class ListClickHandler implements OnItemClickListener{
-//
-//        @Override
-//        public void onItemClick(AdapterView<?> adapter, View view, int position, long arg3) {
-//            System.out.println("tapped");
-//            Intent intent = new Intent(getApplicationContext(), details.class);
-//            startActivity(intent);
-//        }
-//
-//    }
+
+
 }
