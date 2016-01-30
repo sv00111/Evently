@@ -1,14 +1,17 @@
 package com.example.shreyvalia.evently;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -74,17 +77,18 @@ public class HotFragment extends Fragment {
         eventMap.put("description", "Ayyyyyyy LMAO.");
         eventList.add(eventMap);
 
+        //Store all displayed text in arrays of string
         String[] eventTitle = new String[eventList.size()];
         String[] eventDate = new String[eventList.size()];
         String[] voteCount = new String[eventList.size()];
         String[] description = new String[eventList.size()];
+        //loop through all array to display all events and details
         for (int i = 0; i < eventList.size(); i ++){
             Map eventObject = (HashMap) eventList.get(i);
             eventTitle[i] = (String) eventObject.get("title");
             eventDate [i] = (String) eventObject.get("date");
             voteCount [i] = (String) eventObject.get("voteCount");
             description [i] = (String) eventObject.get("description");
-            System.out.println(eventTitle[i].toString());
         }
 
         //Display strings array events.
@@ -92,8 +96,25 @@ public class HotFragment extends Fragment {
 
         eventListView.setAdapter(eventAdapter);
 
+        eventListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                        //String currentEvent = String.valueOf(parent.getItemAtPosition(position));
+                        //Toast.makeText(getActivity().getApplicationContext(), currentEvent, Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getActivity().getApplicationContext(), detailActivity.class);
+                        intent.putExtra("eventTitle",String.valueOf(parent.getItemAtPosition(position)));
+                        intent.putExtra("date",String.valueOf(parent.getItemAtPosition(position)));
+                        intent.putExtra("description",String.valueOf(parent.getItemAtPosition(position)));
+                        intent.putExtra("address","101 High Street Santa Cruz, CA 95060");
+                        startActivity(intent);
+                    }
+                }
+        );
         // Inflate the layout for this fragment
         return rootView;
     }
+
+
 
 }
