@@ -78,10 +78,10 @@ public class HotFragment extends Fragment {
         eventList.add(eventMap);
 
         //Store all displayed text in arrays of string
-        String[] eventTitle = new String[eventList.size()];
-        String[] eventDate = new String[eventList.size()];
-        String[] voteCount = new String[eventList.size()];
-        String[] description = new String[eventList.size()];
+        final String[] eventTitle = new String[eventList.size()];
+        final String[] eventDate = new String[eventList.size()];
+        final String[] voteCount = new String[eventList.size()];
+        final String[] description = new String[eventList.size()];
         //loop through all array to display all events and details
         for (int i = 0; i < eventList.size(); i ++){
             Map eventObject = (HashMap) eventList.get(i);
@@ -103,9 +103,9 @@ public class HotFragment extends Fragment {
                         //String currentEvent = String.valueOf(parent.getItemAtPosition(position));
                         //Toast.makeText(getActivity().getApplicationContext(), currentEvent, Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getActivity().getApplicationContext(), detailActivity.class);
-                        intent.putExtra("eventTitle",String.valueOf(parent.getItemAtPosition(position)));
-                        intent.putExtra("date",String.valueOf(parent.getItemAtPosition(position)));
-                        intent.putExtra("description",String.valueOf(parent.getItemAtPosition(position)));
+                        intent.putExtra("eventTitle",eventTitle[position]);
+                        intent.putExtra("date",eventDate[position]);
+                        intent.putExtra("description",description[position]);
                         intent.putExtra("address","101 High Street Santa Cruz, CA 95060");
                         startActivity(intent);
                     }
