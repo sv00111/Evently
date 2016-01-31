@@ -5,15 +5,22 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
+
+import java.text.ParseException;
+
 public class MainActivity extends AppCompatActivity {
 
     Button butt;
+
+    String USERID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -25,6 +32,60 @@ public class MainActivity extends AppCompatActivity {
 
         butt = (Button) findViewById(R.id.button);
         butt.setOnClickListener(new MyClass());
+
+        USERID = null;
+
+        node n = new node("2");
+        try {
+            n.setStartDate_Time("13-11-1994 2:01:22 AM");
+            n.setEndDate_Time("13-12-1994 1:11:22 PM");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Log.d("The dateTIme", n.getStartDate_Time());
+
+
+
+
+        Log.d("The ENDdateTIme", n.getEndDate_Time());
+
+
+
+//        myFirebaseRef.authAnonymously(myFirebaseRef.authResultHandler("anonymous"));
+
+//            mAuthProgressDialog.show();
+//        myFirebaseRef.authAnonymously(new Firebase.AuthResultHandler() {
+//            @Override
+//            public void onAuthenticated(AuthData authData) {
+//
+//            }
+//
+//            @Override
+//            public void onAuthenticationError(FirebaseError firebaseError) {
+//
+//            }
+//        });
+//
+
+//        myFirebaseRef.authAnonymously(new Firebase.AuthResultHandler() {
+//            @Override
+//            public void onAuthenticated(AuthData authData) {
+//                // we've authenticated this session with your Firebase app
+//               USERID = authData.getUid();
+//                Log.d(" frifjiw", "hfhuf8rf");
+//            }
+//            @Override
+//            public void onAuthenticationError(FirebaseError firebaseError) {
+//                // there was an error
+//            }
+//        });
+//
+//        Log.d("MAIN ACTIVITY USER", " " + USERID);
+
+
+// myFirebaseRef.getAuth()
+//        myFirebaseRef.authAnonymously();
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
