@@ -20,10 +20,10 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RecentFragment extends Fragment {
+public class selfFragment extends Fragment {
 
 
-    public RecentFragment() {
+    public selfFragment() {
         // Required empty public constructor
     }
 
@@ -31,8 +31,8 @@ public class RecentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_hot, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_self, container, false);
 
         //Code start here
         ListView eventListView = (ListView) rootView.findViewById(R.id.eventList);
@@ -46,14 +46,6 @@ public class RecentFragment extends Fragment {
         eventMap.put("voteCount", "25");
         eventMap.put("description", "Come hack in UCSC. Free redbull included.");
         eventList.add(eventMap);
-
-        eventMap = new HashMap();
-        eventMap.put("title", "Whatever");
-        eventMap.put("date", "1/31/2016");
-        eventMap.put("voteCount", "-1");
-        eventMap.put("description", "Yea.");
-        eventList.add(eventMap);
-
         //New event map
         eventMap = new HashMap();
         eventMap.put("title", "Naked Run");
@@ -62,19 +54,6 @@ public class RecentFragment extends Fragment {
         eventMap.put("description", "Take off your clothes");
         eventList.add(eventMap);
 
-        eventMap = new HashMap();
-        eventMap.put("title", "Sup");
-        eventMap.put("date", "1/29/2016");
-        eventMap.put("voteCount", "55");
-        eventMap.put("description", "Supppp.");
-        eventList.add(eventMap);
-
-        eventMap = new HashMap();
-        eventMap.put("title", "Yo");
-        eventMap.put("date", "1/29/2016");
-        eventMap.put("voteCount", "99");
-        eventMap.put("description", "Ayyyyyyy LMAO.");
-        eventList.add(eventMap);
 
         //Store all displayed text in arrays of string
         final String[] eventTitle = new String[eventList.size()];
@@ -91,7 +70,7 @@ public class RecentFragment extends Fragment {
         }
 
         //Display strings array events.
-        ListAdapter eventAdapter = new customAdaptor(getActivity().getApplicationContext(), eventTitle, eventDate, voteCount, description);
+        ListAdapter eventAdapter = new customAdaptorSelf(getActivity().getApplicationContext(), eventTitle, eventDate);
 
         eventListView.setAdapter(eventAdapter);
 
@@ -104,8 +83,6 @@ public class RecentFragment extends Fragment {
                         Intent intent = new Intent(getActivity().getApplicationContext(), detailActivity.class);
                         intent.putExtra("eventTitle",eventTitle[position]);
                         intent.putExtra("date",eventDate[position]);
-                        intent.putExtra("description",description[position]);
-                        intent.putExtra("address","101 High Street Santa Cruz, CA 95060");
                         startActivity(intent);
                     }
                 }
