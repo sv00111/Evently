@@ -20,6 +20,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /**
  * Created by Yuyou on 1/29/2016.
  */
@@ -43,8 +45,7 @@ public class customAdaptor extends ArrayAdapter<String> {
         LayoutInflater customInflater = LayoutInflater.from(getContext());
         View customView = customInflater.inflate(R.layout.custom_row, parent, false);
 
-        //String singleEvent = getItem(position);
-        //String singleDate = getItem(position);
+        //Declaring all textviews in the row
         TextView eventText = (TextView) customView.findViewById(R.id.eventTitle);
         TextView eventDate = (TextView) customView.findViewById(R.id.eventDate);
         TextView voteText = (TextView) customView.findViewById(R.id.voteCount);

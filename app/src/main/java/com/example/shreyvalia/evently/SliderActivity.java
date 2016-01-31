@@ -6,6 +6,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import com.parse.ParseObject;
+
+import com.parse.Parse;
 
 public class SliderActivity extends AppCompatActivity {
     ViewPager pager;
@@ -20,8 +23,8 @@ public class SliderActivity extends AppCompatActivity {
         tabLayout= (TabLayout) findViewById(R.id.tab_layout);
 
 
-        MainActivity.references.add(1, new node("2"));
-        Log.d("slider", MainActivity.references.get(1).getUserID());
+        //MainActivity.references.add(1, new node("2"));
+        //Log.d("slider", MainActivity.references.get(1).getUserID());
 
         FragmentManager manager=getSupportFragmentManager();
         PagerAdapter adapter=new PagerAdapter(manager);
@@ -29,6 +32,10 @@ public class SliderActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(pager);
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setTabsFromPagerAdapter(adapter);
+
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this);
+
 
     }
 }

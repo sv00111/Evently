@@ -50,47 +50,6 @@ public class CreateEventActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-        public void submit(View v) {
-            Log.d("fisdfufids", "inSUBMIT");
-
-            node n = new node("1");
-            EditText eventName = (EditText)findViewById(R.id.editText2);
-            n.setName(eventName.getText().toString());
-            EditText capacity = (EditText)findViewById(R.id.editText3);
-            //handle null values
-            n.setMax(Integer.parseInt(capacity.getText().toString()));
-
-
-            EditText startDate = (EditText)findViewById(R.id.txtdate_start);
-            String startDateString = startDate.getText().toString();
-            //need to add start time to string
-            String startDateAndTime = startDateString +" " ; //add time variable
-
-            EditText endDate = (EditText)findViewById(R.id.txtdate_end);
-            String endDateString = endDate.getText().toString();
-            //need to add end time to string
-            String endDateAndtime = endDateString + " " ;//add time variable
-
-
-            EditText address = (EditText)findViewById(R.id.editText7);
-            n.setAddress(address.getText().toString());
-            EditText description = (EditText)findViewById(R.id.editText8);
-            n.setDescription(description.getText().toString());
-            n.setnAttend(1);
-            n.setVisible(true);
-
-            Log.d("Event Name", n.getName());
-            Log.d("Description", n.getDescription());
-            Log.d("Max capcityy", String.valueOf(n.getMax()));
-            Log.d("Address", n.getAddress());
-
-
-//            MainActivity.references.add(n);
-            Toast.makeText(getApplicationContext(), "Submit Pressed", Toast.LENGTH_SHORT).show();
-
-        }
         EditText txtTime = (EditText) findViewById(R.id.txttime_start);
         txtTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -116,4 +75,45 @@ public class CreateEventActivity extends AppCompatActivity {
         });
     }
 
+    public void submit(View v) {
+        Log.d("fisdfufids", "inSUBMIT");
+
+        node n = new node("1");
+        EditText eventName = (EditText) findViewById(R.id.editText2);
+        n.setName(eventName.getText().toString());
+        EditText capacity = (EditText) findViewById(R.id.editText3);
+        //handle null values
+        n.setMax(Integer.parseInt(capacity.getText().toString()));
+
+
+        EditText startDate = (EditText) findViewById(R.id.txtdate_start);
+        String startDateString = startDate.getText().toString();
+        //need to add start time to string
+        String startDateAndTime = startDateString + " "; //add time variable
+
+        EditText endDate = (EditText) findViewById(R.id.txtdate_end);
+        String endDateString = endDate.getText().toString();
+        //need to add end time to string
+        String endDateAndtime = endDateString + " ";//add time variable
+
+
+        EditText address = (EditText) findViewById(R.id.editText7);
+        n.setAddress(address.getText().toString());
+        EditText description = (EditText) findViewById(R.id.editText8);
+        n.setDescription(description.getText().toString());
+        n.setnAttend(1);
+        n.setVisible(true);
+
+        Log.d("Event Name", n.getName());
+        Log.d("Description", n.getDescription());
+        Log.d("Max capcityy", String.valueOf(n.getMax()));
+        Log.d("Address", n.getAddress());
+
+
+//            MainActivity.references.add(n);
+        Toast.makeText(getApplicationContext(), "Submit Pressed", Toast.LENGTH_SHORT).show();
+
+    }
 }
+
+
