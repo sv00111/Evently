@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 //        butt = (Button) findViewById(R.id.button);
 //        butt.setOnClickListener(new MyClass());
 
-
+        references = new ArrayList<node>();
 //        node n = new node("2");
 //        try {
 //            n.setStartDate_Time("13-11-1994 2:01:22 AM");
