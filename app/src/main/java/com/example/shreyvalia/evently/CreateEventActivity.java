@@ -110,8 +110,9 @@ public class CreateEventActivity extends AppCompatActivity {
         Log.d("Address", n.getAddress());
 
 
-//            MainActivity.references.add(n);
+            MainActivity.references.add(n);
         Toast.makeText(getApplicationContext(), "Submit Pressed", Toast.LENGTH_SHORT).show();
+        this.finish();
 
     }
 }
