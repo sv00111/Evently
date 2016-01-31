@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.shreyvalia.evently">
 
+    <uses-feature android:name="android.hardware.camera2" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -30,7 +34,6 @@
             android:name=".CreateEventActivity"
             android:label="title_create_event_activity"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".detailActivity"
             android:label="@string/title_activity_detail"
@@ -41,6 +44,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".detailPhoto"
+            android:label="@string/title_activity_detail_photo"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
