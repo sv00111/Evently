@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Evennntly");
+        toolbar.setTitle("Evently");
         setSupportActionBar(toolbar);
 
 
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), CreateEventActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SliderActivity.class);
             startActivity(intent);
         }
 
