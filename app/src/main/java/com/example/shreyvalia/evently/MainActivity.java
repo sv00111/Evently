@@ -12,8 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.firebase.client.Firebase;
-
 import java.text.ParseException;
 import java.util.ArrayList;
 

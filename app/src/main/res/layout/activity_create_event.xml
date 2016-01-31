@@ -111,13 +111,17 @@
                     android:id="@+id/textView5"
                     android:allowUndo="false" />
 
-                <DatePicker
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/datePicker"
-                    android:calendarViewShown="false"
-                    android:datePickerMode="spinner"
-                    android:layout_gravity="center_horizontal" />
+                    android:id="@+id/txtdate_start"
+                    android:textSize="20sp"
+                    android:hint="Select Date"
+                    android:singleLine="true" />
+
+                    <!--android:calendarViewShown="false"-->
+                    <!--android:datePickerMode="spinner"-->
+                    <!--android:layout_gravity="center_horizontal" />-->
 
 
             </LinearLayout>
@@ -162,22 +166,13 @@
                     android:text="END DATE"
                     android:id="@+id/textView15" />
 
-                <DatePicker
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/datePicker4"
-                    android:calendarViewShown="false"
-                    android:datePickerMode="spinner"
-                    android:layout_gravity="center_horizontal" >
-
-                    <DatePicker
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/datePicker3"
-                        android:calendarViewShown="false"
-                        android:datePickerMode="spinner"
-                        android:layout_gravity="center_horizontal" />
-                </DatePicker>
+                    android:id="@+id/txtdate_end"
+                    android:textSize="20sp"
+                    android:hint="Select Date"
+                    android:singleLine="true" />
 
 
             </LinearLayout>
