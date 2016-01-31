@@ -3,7 +3,6 @@ package com.example.shreyvalia.evently;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -11,9 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         butt = (Button) findViewById(R.id.button);
         butt.setOnClickListener(new MyClass());
 
-        USERID = null;
 
 //        node n = new node("2");
 //        try {
@@ -53,18 +49,12 @@ public class MainActivity extends AppCompatActivity {
         android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
         Log.d("UNIQUE BABY", android_id);
+        Intent intent = new Intent(getApplicationContext(), SliderActivity.class);
+        startActivity(intent);
 
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Snackbar.make()
-                Toast.makeText(getApplicationContext(), "Replace with your own action", Toast.LENGTH_LONG).show();
-//                        .setAction("Action", null).show();
-            }
-        });
+
     }
 
     @Override
@@ -94,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), CreateEventActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SliderActivity.class);
             startActivity(intent);
         }
 
