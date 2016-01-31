@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.ParseObject;
+
 public class CreateEventActivity extends AppCompatActivity {
 
 
@@ -115,8 +117,24 @@ public class CreateEventActivity extends AppCompatActivity {
         Log.d("start time", n.getStartDate_Time());
         Log.d("end time", n.getEndDate_Time());
 
+        //Store values in strings
+        String eventTitle = n.getName();
+        String eventDescription = n.getDescription();
+        String eventAddress = n.getAddress();
+        String eventDate = n.getStartDate_Time();
+        System.out.println("Date here:");
+        System.out.println(eventDate);
 
-            MainActivity.references.add(n);
+        //Saving to Parse
+        ParseObject eventObject = new ParseObject("TestObject");
+        eventObject.put("eventTitle", eventTitle);
+        eventObject.put("description", eventDescription);
+        eventObject.put("address", eventAddress);
+        eventObject.put("voteCount", 0);
+        eventObject.put("date", eventDate);
+        eventObject.saveInBackground();
+
+        MainActivity.references.add(n);
         Toast.makeText(getApplicationContext(), "Submit Pressed", Toast.LENGTH_SHORT).show();
         this.finish();
 
