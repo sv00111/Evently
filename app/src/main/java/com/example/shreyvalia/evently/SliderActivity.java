@@ -1,12 +1,13 @@
 package com.example.shreyvalia.evently;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import com.parse.ParseObject;
+import android.view.View;
 
 import com.parse.Parse;
 
@@ -35,6 +36,15 @@ public class SliderActivity extends AppCompatActivity {
 
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CreateEventActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

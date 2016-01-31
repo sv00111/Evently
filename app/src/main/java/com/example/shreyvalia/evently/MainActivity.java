@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), CreateEventActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SliderActivity.class);
             startActivity(intent);
         }
 
