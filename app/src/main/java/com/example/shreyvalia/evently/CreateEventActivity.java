@@ -22,7 +22,6 @@ public class CreateEventActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
-
     public void onStart() {
         super.onStart();
         EditText txtDate = (EditText) findViewById(R.id.txtdate_start);
@@ -48,7 +47,30 @@ public class CreateEventActivity extends AppCompatActivity {
                 }
             }
         });
-    }
 
+        EditText txtTime = (EditText) findViewById(R.id.txttime_start);
+        txtTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    TimeDialog dialog = new TimeDialog((EditText) v.findViewById(R.id.txttime_start));
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    dialog.show(ft, "TimePicker");
+                }
+            }
+        });
+
+        txtTime = (EditText) findViewById(R.id.txttime_end);
+        txtTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    TimeDialog dialog = new TimeDialog((EditText) v.findViewById(R.id.txttime_end));
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    dialog.show(ft, "TimePicker");
+                }
+            }
+        });
+    }
 
 }
