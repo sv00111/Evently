@@ -22,12 +22,7 @@ public class CreateEventActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-//        Button button = (==Button)findViewById(R.id.button4);
-//        button.setOnClickListener(new submit());
     }
-
-
 
 
     public void onStart() {
@@ -96,5 +91,29 @@ public class CreateEventActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Submit Pressed", Toast.LENGTH_SHORT).show();
 
         }
+        EditText txtTime = (EditText) findViewById(R.id.txttime_start);
+        txtTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    TimeDialog dialog = new TimeDialog((EditText) v.findViewById(R.id.txttime_start));
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    dialog.show(ft, "TimePicker");
+                }
+            }
+        });
+
+        txtTime = (EditText) findViewById(R.id.txttime_end);
+        txtTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    TimeDialog dialog = new TimeDialog((EditText) v.findViewById(R.id.txttime_end));
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    dialog.show(ft, "TimePicker");
+                }
+            }
+        });
+    }
 
 }

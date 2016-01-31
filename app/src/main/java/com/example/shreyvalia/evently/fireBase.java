@@ -23,4 +23,9 @@ public class fireBase {
         //firebase ref
         ourInstance = new Firebase("https://eventlyforthehack.firebaseio.com/");
     }
+
+    public static void anonAuthenticate(Firebase.AuthResultHandler handler){
+        ourInstance.authAnonymously(handler);
+    }
+
 }

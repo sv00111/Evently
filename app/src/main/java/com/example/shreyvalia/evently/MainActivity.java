@@ -2,6 +2,7 @@ package com.example.shreyvalia.evently;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<node> references;
     String USERID;
 
+    public String android_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,57 +37,24 @@ public class MainActivity extends AppCompatActivity {
 
         USERID = null;
 
-//        node n = new node("2");
-//        try {
-//            n.setStartDate_Time("13-11-1994 2:01:22 AM");
-//            n.setEndDate_Time("13-12-1994 1:11:22 PM");
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
+        node n = new node("2");
+        try {
+            n.setStartDate_Time("13-11-1994 2:01:22 AM");
+            n.setEndDate_Time("13-12-1994 1:11:22 PM");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
-//        Log.d("The dateTIme", n.getStartDate_Time());
-//
-//
-//
-//
-//        Log.d("The ENDdateTIme", n.getEndDate_Time());
+        Log.d("The dateTIme", n.getStartDate_Time());
 
 
-
-//        myFirebaseRef.authAnonymously(myFirebaseRef.authResultHandler("anonymous"));
-
-//            mAuthProgressDialog.show();
-//        myFirebaseRef.authAnonymously(new Firebase.AuthResultHandler() {
-//            @Override
-//            public void onAuthenticated(AuthData authData) {
-//
-//            }
-//
-//            @Override
-//            public void onAuthenticationError(FirebaseError firebaseError) {
-//
-//            }
-//        });
-//
-
-//        myFirebaseRef.authAnonymously(new Firebase.AuthResultHandler() {
-//            @Override
-//            public void onAuthenticated(AuthData authData) {
-//                // we've authenticated this session with your Firebase app
-//               USERID = authData.getUid();
-//                Log.d(" frifjiw", "hfhuf8rf");
-//            }
-//            @Override
-//            public void onAuthenticationError(FirebaseError firebaseError) {
-//                // there was an error
-//            }
-//        });
-//
-//        Log.d("MAIN ACTIVITY USER", " " + USERID);
+        Log.d("The ENDdateTIme", n.getEndDate_Time());
 
 
-// myFirebaseRef.getAuth()
-//        myFirebaseRef.authAnonymously();
+        android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        Log.d("UNIQUE BABY", android_id);
+
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -130,5 +100,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
 }
