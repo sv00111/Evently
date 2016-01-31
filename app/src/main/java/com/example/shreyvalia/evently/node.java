@@ -1,5 +1,10 @@
 package com.example.shreyvalia.evently;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  * Created by Jenna on 1/30/2016.
  */
@@ -20,9 +25,12 @@ public class node {
     private String userID;
     private boolean visible;
 
+    private static ArrayList<String> userIDResponded;
+
     public node(String userID) {
             this.userID = userID;
             int rating = 0;
+            userIDResponded = new ArrayList<String>();
     }
 
     public String getName() {
@@ -79,6 +87,15 @@ public class node {
 //            e.printStackTrace();
 //        }
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+
+        try {
+            endDate_Time = dateFormat.parse(date_time);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
 
     public String getEndDate_Time(){ return endDate_Time;
@@ -127,5 +144,23 @@ public class node {
         this.visible = visible;
     }
 
+    public ArrayList getUserIDResponded(){
+        return userIDResponded;
+    }
+
+    public void insertUserID(String new_userID){
+        userIDResponded.add(new_userID);
+    }
+    public boolean userIDResponded(String token){
+//        TODO: binary search too see if token is in userIDResponded.
+        for(int i = 0; i < userIDResponded.size(); i++){
+            if(userIDResponded.get(i) == token){
+                return true;
+            }
+        }
+        return false;
+    }
+//    public
+    
 }
 
