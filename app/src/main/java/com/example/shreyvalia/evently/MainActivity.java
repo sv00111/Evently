@@ -19,11 +19,11 @@ import java.text.ParseException;
 public class MainActivity extends AppCompatActivity {
 
     Button butt;
-
+    public static ArrayList<node> references;
     String USERID;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -127,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), CreateEventActivity.class);
-            intent.putExtra("MainActivity.class", true);
             startActivity(intent);
         }
 

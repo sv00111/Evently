@@ -42,39 +42,39 @@ public class HotFragment extends Fragment {
         List eventList = new ArrayList();
         //New event map
         Map eventMap = new HashMap();
-        eventMap.put("title", "Hackathon");
-        eventMap.put("date", "1/29/2016");
+        eventMap.put("title", "HACKUCSC");
+        eventMap.put("date", "January 30, 2016");
         eventMap.put("voteCount", "25");
-        eventMap.put("description", "Come hack in UCSC. Free redbull included.");
+        eventMap.put("description", "Come hack in UCSC! First place winner gets ...");
         eventList.add(eventMap);
         //New event map
         eventMap = new HashMap();
-        eventMap.put("title", "Naked Run");
-        eventMap.put("date", "1/30/2016");
+        eventMap.put("title", "Volunteer Day! ");
+        eventMap.put("date", "July 26, 2016");
         eventMap.put("voteCount", "15");
-        eventMap.put("description", "Take off your clothes");
+        eventMap.put("description", "Come join UC Santa Cruz in it's annual volunteer ...");
         eventList.add(eventMap);
 
         eventMap = new HashMap();
-        eventMap.put("title", "Whatever");
-        eventMap.put("date", "1/31/2016");
-        eventMap.put("voteCount", "-1");
-        eventMap.put("description", "Yea.");
+        eventMap.put("title", "Arts and Crafts! ");
+        eventMap.put("date", "June 25, 2016");
+        eventMap.put("voteCount", "5");
+        eventMap.put("description", "Come and learn the basics of DIY crafts and knitting ...");
 
         eventList.add(eventMap);
 
         eventMap = new HashMap();
-        eventMap.put("title", "Sup");
-        eventMap.put("date", "1/29/2016");
-        eventMap.put("voteCount", "55");
-        eventMap.put("description", "Supppp.");
+        eventMap.put("title", "STEM Innovation Bowl");
+        eventMap.put("date", "January 30, 2016");
+        eventMap.put("voteCount", "4");
+        eventMap.put("description", "Science and technology by The Santa Clara Library and Inf ...");
         eventList.add(eventMap);
 
         eventMap = new HashMap();
-        eventMap.put("title", "Yo");
-        eventMap.put("date", "1/29/2016");
-        eventMap.put("voteCount", "99");
-        eventMap.put("description", "Ayyyyyyy LMAO.");
+        eventMap.put("title", "2016 Super Bowl");
+        eventMap.put("date", "Feburary 7, 2016");
+        eventMap.put("voteCount", "2");
+        eventMap.put("description", "Sign up for Our VIP Guest List for a chance to win Super Bowl Game ...");
         eventList.add(eventMap);
 
         //Store all displayed text in arrays of string
