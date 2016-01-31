@@ -86,16 +86,16 @@ public class node {
 //            // TODO Auto-generated catch block
 //            e.printStackTrace();
 //        }
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
-
-        try {
-            endDate_Time = dateFormat.parse(date_time);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
+//
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+//
+//        try {
+//            endDate_Time = dateFormat.parse(date_time);
+//        } catch (ParseException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//
     }
 
     public String getEndDate_Time(){ return endDate_Time;
