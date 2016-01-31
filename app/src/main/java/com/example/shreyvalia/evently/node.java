@@ -2,6 +2,7 @@ package com.example.shreyvalia.evently;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -16,17 +17,20 @@ public class node {
 //    private String endDate;
 //    private String startTime;
 //    private String endTime;
-    private Date startDate_Time; //format is ("dd-MM-yyyy hh:mm:ss a")
-    private Date endDate_Time; //format is ("dd-MM-yyyy hh:mm:ss a")
+    private String startDate_Time; //format is ("dd-MM-yyyy hh:mm:ss a")
+    private String endDate_Time; //format is ("dd-MM-yyyy hh:mm:ss a")
     private int nAttend;
     private int max;
     private int rating;
     private String userID;
     private boolean visible;
 
+    private static ArrayList<String> userIDResponded;
+
     public node(String userID) {
             this.userID = userID;
             int rating = 0;
+            userIDResponded = new ArrayList<String>();
     }
 
     public String getName() {
@@ -53,25 +57,35 @@ public class node {
         this.address = address;
     }
 
-    public void setStartDate_Time(String date_time) throws ParseException {
+    public void setStartDate(String startDate_time) {//throws ParseException {
+        this.startDate_Time = startDate_time;
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
-
-        try {
-            startDate_Time = dateFormat.parse(date_time);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+//
+//        try {
+//            startDate_Time = dateFormat.parse(date_time);
+//        } catch (ParseException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
 
     }
 
-    public String getStartDate_Time(){
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
-        return formatter.format(startDate_Time);
+    public String getStartDate_Time(){ return startDate_Time;
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+//        return formatter.format(startDate_Time);
     }
 
-    public void setEndDate_Time(String date_time) throws ParseException {
+    public void setEndDate_Time(String endDate_time){ //throws ParseException {
+            this.endDate_Time = endDate_time;
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+//
+//        try {
+//            endDate_Time = dateFormat.parse(date_time);
+//        } catch (ParseException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
 
@@ -84,9 +98,9 @@ public class node {
 
     }
 
-    public String getEndDate_Time(){
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
-        return formatter.format(endDate_Time);
+    public String getEndDate_Time(){ return endDate_Time;
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+//        return formatter.format(endDate_Time);
     }
 
 
@@ -130,5 +144,23 @@ public class node {
         this.visible = visible;
     }
 
+    public ArrayList getUserIDResponded(){
+        return userIDResponded;
+    }
+
+    public void insertUserID(String new_userID){
+        userIDResponded.add(new_userID);
+    }
+    public boolean userIDResponded(String token){
+//        TODO: binary search too see if token is in userIDResponded.
+        for(int i = 0; i < userIDResponded.size(); i++){
+            if(userIDResponded.get(i) == token){
+                return true;
+            }
+        }
+        return false;
+    }
+//    public
+    
 }
 

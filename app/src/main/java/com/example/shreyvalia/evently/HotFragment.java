@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +14,33 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HotFragment extends Fragment {
+
+    boolean queryDone = false;
+    String[] eventTitle = {};
+    String[] eventDate = {};
+    String[] voteCount = {};
+    String[] description = {};
+    View rootView;
+    ListView eventListView;
 
     public HotFragment() {
         // Required empty public constructor
@@ -33,88 +51,86 @@ public class HotFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_hot, container, false);
+        rootView = inflater.inflate(R.layout.fragment_hot, container, false);
 
         //Code start here
-        ListView eventListView = (ListView) rootView.findViewById(R.id.eventList);
+        eventListView = (ListView) rootView.findViewById(R.id.eventList);
 
         //ArrayList of maps
-        List eventList = new ArrayList();
-        //New event map
-        Map eventMap = new HashMap();
-        eventMap.put("title", "HACKUCSC");
-        eventMap.put("date", "January 30, 2016");
-        eventMap.put("voteCount", "25");
-        eventMap.put("description", "Come hack in UCSC! First place winner gets ...");
-        eventList.add(eventMap);
-        //New event map
-        eventMap = new HashMap();
-        eventMap.put("title", "Volunteer Day! ");
-        eventMap.put("date", "July 26, 2016");
-        eventMap.put("voteCount", "15");
-        eventMap.put("description", "Come join UC Santa Cruz in it's annual volunteer ...");
-        eventList.add(eventMap);
+        final List eventList = new ArrayList();
+        try {
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("TestObject");
+            query.orderByDescending("voteCount");
+            query.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> eventParseList, ParseException e) {
+                    if (e == null) {
 
-        eventMap = new HashMap();
-        eventMap.put("title", "Arts and Crafts! ");
-        eventMap.put("date", "June 25, 2016");
-        eventMap.put("voteCount", "5");
-        eventMap.put("description", "Come and learn the basics of DIY crafts and knitting ...");
+                        System.out.println("Start Here");
+                        Log.d("event", "Retrieved " + eventParseList.size() + " events");
+                        for (ParseObject eventObject : eventParseList) {
+                            Map eventMap = new HashMap();
+                            eventMap.put("title", eventObject.get("eventTitle"));
+                            eventMap.put("date", eventObject.get("date"));
+                            eventMap.put("voteCount", eventObject.get("voteCount"));
+                            eventMap.put("description", eventObject.get("description"));
+                            eventList.add(eventMap);
+                        }
+                        System.out.println(eventList);
+                    } else {
+                        Log.d("event", "Error: " + e.getMessage());
+                    }
 
-        eventList.add(eventMap);
 
-        eventMap = new HashMap();
-        eventMap.put("title", "STEM Innovation Bowl");
-        eventMap.put("date", "January 30, 2016");
-        eventMap.put("voteCount", "4");
-        eventMap.put("description", "Science and technology by The Santa Clara Library and Inf ...");
-        eventList.add(eventMap);
+                    // this code will be executed after 2 seconds
+                    //Store all displayed text in arrays of string
+                    eventTitle = new String[eventList.size()];
+                    eventDate = new String[eventList.size()];
+                    voteCount = new String[eventList.size()];
+                    description = new String[eventList.size()];
 
-        eventMap = new HashMap();
-        eventMap.put("title", "2016 Super Bowl");
-        eventMap.put("date", "Feburary 7, 2016");
-        eventMap.put("voteCount", "2");
-        eventMap.put("description", "Sign up for Our VIP Guest List for a chance to win Super Bowl Game ...");
-        eventList.add(eventMap);
+                    //Populate strings
+                    for (int i = 0; i < eventList.size(); i++) {
+                        Map eventObject = (HashMap) eventList.get(i);
+                        eventTitle[i] = (String) eventObject.get("title");
+                        eventDate[i] = (String) eventObject.get("date");
+                        voteCount[i] = String.valueOf(eventObject.get("voteCount"));
+                        description[i] = (String) eventObject.get("description");
+                    }
+                    System.out.println(eventTitle);
 
-        //Store all displayed text in arrays of string
-        final String[] eventTitle = new String[eventList.size()];
-        final String[] eventDate = new String[eventList.size()];
-        final String[] voteCount = new String[eventList.size()];
-        final String[] description = new String[eventList.size()];
-        //loop through all array to display all events and details
-        for (int i = 0; i < eventList.size(); i ++){
-            Map eventObject = (HashMap) eventList.get(i);
-            eventTitle[i] = (String) eventObject.get("title");
-            eventDate [i] = (String) eventObject.get("date");
-            voteCount [i] = (String) eventObject.get("voteCount");
-            description [i] = (String) eventObject.get("description");
+
+                    ListAdapter eventAdapter = new customAdaptor(getActivity().getApplicationContext(), eventTitle, eventDate, voteCount, description);
+                    eventListView.setAdapter(eventAdapter);
+
+                    eventListView.setOnItemClickListener(
+                            new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    //String currentEvent = String.valueOf(parent.getItemAtPosition(position));
+                                    //Toast.makeText(getActivity().getApplicationContext(), currentEvent, Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(getActivity().getApplicationContext(), detailActivity.class);
+                                    intent.putExtra("eventTitle", eventTitle[position]);
+                                    intent.putExtra("date", eventDate[position]);
+                                    intent.putExtra("description", description[position]);
+                                    intent.putExtra("address", "101 High Street Santa Cruz, CA 95060");
+                                    startActivity(intent);
+                                }
+                            }
+                    );
+                    // Inflate the layout for this fragment
+
+                    //Display strings array events.
+                    queryDone = true;
+                }
+            });
+        }catch (Exception e){
+            queryDone = true;
         }
 
-        //Display strings array events.
-        ListAdapter eventAdapter = new customAdaptor(getActivity().getApplicationContext(), eventTitle, eventDate, voteCount, description);
-
-        eventListView.setAdapter(eventAdapter);
-
-        eventListView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                        //String currentEvent = String.valueOf(parent.getItemAtPosition(position));
-                        //Toast.makeText(getActivity().getApplicationContext(), currentEvent, Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getActivity().getApplicationContext(), detailActivity.class);
-                        intent.putExtra("eventTitle",eventTitle[position]);
-                        intent.putExtra("date",eventDate[position]);
-                        intent.putExtra("description",description[position]);
-                        intent.putExtra("address","101 High Street Santa Cruz, CA 95060");
-                        startActivity(intent);
-                    }
-                }
-        );
-        // Inflate the layout for this fragment
-        return rootView;
+        if(queryDone){
+            return rootView;
+        }else{
+            return rootView;
+        }
     }
-
-
-
 }
