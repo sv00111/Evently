@@ -5,11 +5,9 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -25,9 +23,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Evennntly");
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar.setTitle("Evennntly");
+//        setSupportActionBar(toolbar);
+//        toolbar.animate().translationY(-toolbar.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
+
 
 //        butt = (Button) findViewById(R.id.button);
 //        butt.setOnClickListener(new MyClass());
@@ -50,9 +50,10 @@ public class MainActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID);
         Log.d("UNIQUE BABY", android_id);
 
-        ImageView im = (ImageView) findViewById(R.id.imageView4);
-        im.setImageResource(R.drawable.welcome_screen);
-        new CountDownTimer(3000,1000){
+//        ImageView im = (ImageView) findViewById(R.id.imageView4);
+//        im.setImageResource(R.drawable.welcome_screen);
+//        im.setScaleType(ImageView.ScaleType.CENTER);
+        new CountDownTimer(5000,1000){
             @Override
             public void onTick(long millisUntilFinished){
 
@@ -67,11 +68,9 @@ public class MainActivity extends AppCompatActivity {
         }.start();
 
 
-
-
-
-
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

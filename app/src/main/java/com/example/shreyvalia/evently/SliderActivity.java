@@ -48,4 +48,26 @@ public class SliderActivity extends AppCompatActivity {
 
 
     }
+
+//
+//    protected void onPause() {
+//        super.onPause();
+//        this.finish();
+//    }
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        this.finish();
+//    }
+//
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        this.finish();
+//    }
+//    @Override
+//    public void onBackPressed()
+//    {
+//        this.finish();
+//    }
 }
