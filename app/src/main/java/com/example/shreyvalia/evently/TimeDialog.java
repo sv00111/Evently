@@ -54,6 +54,7 @@ public class TimeDialog extends DialogFragment implements TimePickerDialog.OnTim
         if (hourOfDay >= 13) {
             hour = hourOfDay - 12;
             pm = true;
+
         } else {
             hour = hourOfDay;
             am = true;

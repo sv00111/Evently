@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class CreateEventActivity extends AppCompatActivity {
 
 
@@ -50,47 +54,7 @@ public class CreateEventActivity extends AppCompatActivity {
                 }
             }
         });
-    }
 
-        public void submit(View v) {
-            Log.d("fisdfufids", "inSUBMIT");
-
-            node n = new node("1");
-            EditText eventName = (EditText)findViewById(R.id.editText2);
-            n.setName(eventName.getText().toString());
-            EditText capacity = (EditText)findViewById(R.id.editText3);
-            //handle null values
-            n.setMax(Integer.parseInt(capacity.getText().toString()));
-
-
-            EditText startDate = (EditText)findViewById(R.id.txtdate_start);
-            String startDateString = startDate.getText().toString();
-            //need to add start time to string
-            String startDateAndTime = startDateString +" " ; //add time variable
-
-            EditText endDate = (EditText)findViewById(R.id.txtdate_end);
-            String endDateString = endDate.getText().toString();
-            //need to add end time to string
-            String endDateAndtime = endDateString + " " ;//add time variable
-
-
-            EditText address = (EditText)findViewById(R.id.editText7);
-            n.setAddress(address.getText().toString());
-            EditText description = (EditText)findViewById(R.id.editText8);
-            n.setDescription(description.getText().toString());
-            n.setnAttend(1);
-            n.setVisible(true);
-
-            Log.d("Event Name", n.getName());
-            Log.d("Description", n.getDescription());
-            Log.d("Max capcityy", String.valueOf(n.getMax()));
-            Log.d("Address", n.getAddress());
-
-
-//            MainActivity.references.add(n);
-            Toast.makeText(getApplicationContext(), "Submit Pressed", Toast.LENGTH_SHORT).show();
-
-        }
         EditText txtTime = (EditText) findViewById(R.id.txttime_start);
         txtTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -116,4 +80,69 @@ public class CreateEventActivity extends AppCompatActivity {
         });
     }
 
-}
+
+
+
+
+
+        public void submit(View v) {
+            node n = new node("1");
+            EditText eventName = (EditText)findViewById(R.id.editText2);
+            n.setName(eventName.getText().toString());
+            EditText capacity = (EditText)findViewById(R.id.editText3);
+            //handle null values
+            n.setMax(Integer.parseInt(capacity.getText().toString()));
+
+
+            EditText startDate = (EditText)findViewById(R.id.txtdate_start);
+            String startDateString = startDate.getText().toString();
+            EditText startTime = (EditText)findViewById(R.id.txttime_start);
+            String startTimeString = startTime.getText().toString();
+            String startDateAndTime = startDateString +" " + startTimeString;
+            n.setStartDate(startDateAndTime);
+
+            EditText endDate = (EditText)findViewById(R.id.txtdate_end);
+            String endDateString = endDate.getText().toString();
+            EditText endTime = (EditText) findViewById(R.id.txttime_end);
+            String endTimeString = endTime.getText().toString();
+            String endDateAndtime = endDateString + " " + endTimeString;
+            n.setEndDate_Time(endDateAndtime);
+
+
+            EditText address = (EditText)findViewById(R.id.editText7);
+            n.setAddress(address.getText().toString());
+            EditText description = (EditText)findViewById(R.id.editText8);
+            n.setDescription(description.getText().toString());
+            n.setnAttend(1);
+            n.setVisible(true);
+
+            Log.d("Event Name", n.getName());
+            Log.d("Description", n.getDescription());
+            Log.d("Max capcityy", String.valueOf(n.getMax()));
+            Log.d("Address", n.getAddress());
+            Log.d("start time", n.getStartDate_Time());
+            Log.d("end time", n.getEndDate_Time());
+
+
+            DateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd hhmmss");
+            dateFormatter.setLenient(false);
+            Date today = new Date();
+            String s = dateFormatter.format(today);
+            s = s.replaceAll("\\s+","");
+
+            String eventID = MainActivity.android_id + s;
+            n.setEventID(eventID);
+            Log.d("Create  currrent time: ", eventID);
+
+            MainActivity.references.add(n);
+            for(int i = 0;  i < MainActivity.references.size(); i++)
+            {
+                Log.d("testing " + i + ": ", MainActivity.references.get(i).getName());
+            }
+            Toast.makeText(getApplicationContext(), "Submit Pressed", Toast.LENGTH_SHORT).show();
+            this.finish();
+        }
+
+    }
+
+

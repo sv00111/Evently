@@ -6,6 +6,7 @@ import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button butt;
     public static ArrayList<node> references;
-    String USERID;
-
-    public String android_id;
+    public static String android_id;
+//
+//    public String android_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +36,20 @@ public class MainActivity extends AppCompatActivity {
         butt = (Button) findViewById(R.id.button);
         butt.setOnClickListener(new MyClass());
 
-        USERID = null;
+//        USERID = null;
 
-        node n = new node("2");
-        try {
-            n.setStartDate_Time("13-11-1994 2:01:22 AM");
-            n.setEndDate_Time("13-12-1994 1:11:22 PM");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        Log.d("The dateTIme", n.getStartDate_Time());
-
-
-        Log.d("The ENDdateTIme", n.getEndDate_Time());
+//        node n = new node("2");
+//        try {
+//            n.setStartDate_Time("13-11-1994 2:01:22 AM");
+//            n.setEndDate_Time("13-12-1994 1:11:22 PM");
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//
+//        Log.d("The dateTIme", n.getStartDate_Time());
+//
+//
+//        Log.d("The ENDdateTIme", n.getEndDate_Time());
 
 
         android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),

@@ -1,9 +1,6 @@
 package com.example.shreyvalia.evently;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by Jenna on 1/30/2016.
@@ -24,11 +21,13 @@ public class node {
     private int rating;
     private String userID;
     private boolean visible;
+    private String eventID;
 
     private static ArrayList<String> userIDResponded;
 
     public node(String userID) {
-            this.userID = userID;
+            this.userID = MainActivity.android_id;
+            eventID = null;
             int rating = 0;
             userIDResponded = new ArrayList<String>();
     }
@@ -87,14 +86,6 @@ public class node {
 //            e.printStackTrace();
 //        }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
-
-        try {
-            endDate_Time = dateFormat.parse(date_time);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
 
     }
 
@@ -132,7 +123,7 @@ public class node {
         return this.userID;
     }
 
-    public void setUserID(int UserID){
+    public void setUserID(String UserID){
         this.userID = userID;
     }
 
@@ -160,7 +151,11 @@ public class node {
         }
         return false;
     }
-//    public
-    
+    public String getEventID(){
+        return eventID;
+    }
+    public void setEventID(String s){
+        eventID = s;
+    }
 }
 
