@@ -44,10 +44,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".detailPhoto"
-            android:label="@string/title_activity_detail_photo"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <meta-data
+            android:name="com.parse.APPLICATION_ID"
+            android:value="NeToHYe8lHKMChRQJhczcdEHmINTxgGtN8na84OH" />
+        <meta-data
+            android:name="com.parse.CLIENT_KEY"
+            android:value="wPl1BbjyhKEB5NP0op3t3Lm3K0VeV9QsFeWLYavk" />
     </application>
 
 </manifest>

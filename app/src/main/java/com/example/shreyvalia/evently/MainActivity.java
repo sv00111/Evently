@@ -13,15 +13,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     Button butt;
     public static ArrayList<node> references;
-    public static String android_id;
-//
-//    public String android_id;
+    String USERID;
+
+    public String android_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +32,10 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("Evennntly");
         setSupportActionBar(toolbar);
 
-        references = new ArrayList<>();
-
         butt = (Button) findViewById(R.id.button);
         butt.setOnClickListener(new MyClass());
 
-//        USERID = null;
+        USERID = null;
 
 //        node n = new node("2");
 //        try {
@@ -47,9 +46,8 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //
 //        Log.d("The dateTIme", n.getStartDate_Time());
-//
-//
-//        Log.d("The ENDdateTIme", n.getEndDate_Time());
+
+
 
 
         android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),

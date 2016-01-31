@@ -54,6 +54,7 @@ public class RecentFragment extends Fragment {
         final List eventList = new ArrayList();
         try {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("TestObject");
+            query.orderByDescending("createdAt");
             query.findInBackground(new FindCallback<ParseObject>() {
                 public void done(List<ParseObject> eventParseList, ParseException e) {
                     if (e == null) {
