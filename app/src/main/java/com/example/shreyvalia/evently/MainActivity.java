@@ -2,6 +2,7 @@ package com.example.shreyvalia.evently;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,8 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.firebase.client.Firebase;
-
 import java.text.ParseException;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,8 +21,10 @@ public class MainActivity extends AppCompatActivity {
 
     String USERID;
 
+    public String android_id;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -46,46 +47,13 @@ public class MainActivity extends AppCompatActivity {
         Log.d("The dateTIme", n.getStartDate_Time());
 
 
-
-
         Log.d("The ENDdateTIme", n.getEndDate_Time());
 
 
+        android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        Log.d("UNIQUE BABY", android_id);
 
-//        myFirebaseRef.authAnonymously(myFirebaseRef.authResultHandler("anonymous"));
-
-//            mAuthProgressDialog.show();
-//        myFirebaseRef.authAnonymously(new Firebase.AuthResultHandler() {
-//            @Override
-//            public void onAuthenticated(AuthData authData) {
-//
-//            }
-//
-//            @Override
-//            public void onAuthenticationError(FirebaseError firebaseError) {
-//
-//            }
-//        });
-//
-
-//        myFirebaseRef.authAnonymously(new Firebase.AuthResultHandler() {
-//            @Override
-//            public void onAuthenticated(AuthData authData) {
-//                // we've authenticated this session with your Firebase app
-//               USERID = authData.getUid();
-//                Log.d(" frifjiw", "hfhuf8rf");
-//            }
-//            @Override
-//            public void onAuthenticationError(FirebaseError firebaseError) {
-//                // there was an error
-//            }
-//        });
-//
-//        Log.d("MAIN ACTIVITY USER", " " + USERID);
-
-
-// myFirebaseRef.getAuth()
-//        myFirebaseRef.authAnonymously();
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -131,5 +99,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
 }
