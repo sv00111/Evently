@@ -21,13 +21,16 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 frag=new RecentFragment();
                 break;
+            case 2:
+                frag=new selfFragment();
+                break;
         }
         return frag;
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
 
@@ -39,7 +42,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 title="Hot";
                 break;
             case 1:
-                title="Recent";
+                title="New";
+                break;
+            case 2:
+                title="Own";
                 break;
         }
 

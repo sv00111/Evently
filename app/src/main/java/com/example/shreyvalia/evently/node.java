@@ -25,11 +25,8 @@ public class node {
     private boolean visible;
 
     public node(String userID) {
-        this.userID = userID;
-        int rating;
-        String name;
-        String description;
-
+            this.userID = userID;
+            int rating = 0;
     }
 
     public String getName() {

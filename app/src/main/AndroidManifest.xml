@@ -27,6 +27,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SliderActivity" />
         <activity
+            android:name=".CreateEventActivity"
+            android:label="title_create_event_activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
             android:name=".detailActivity"
             android:label="@string/title_activity_detail"
             android:theme="@style/AppTheme.NoActionBar">

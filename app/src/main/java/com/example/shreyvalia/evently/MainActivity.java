@@ -14,12 +14,14 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button butt;
+    public static ArrayList<node> references;
+    private Button butt;
 
-    String USERID;
+    private String USERID;
 
     public String android_id;
 
@@ -30,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Evennntly");
         setSupportActionBar(toolbar);
+
+
+        references = new ArrayList<node>();
+        references.add(new node("3"));
+        Log.d("main activity", references.get(0).getUserID());
 
         butt = (Button) findViewById(R.id.button);
         butt.setOnClickListener(new MyClass());
@@ -94,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), SliderActivity.class);
+            Intent intent = new Intent(getApplicationContext(), CreateEventActivity.class);
             startActivity(intent);
         }
 
