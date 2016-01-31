@@ -77,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fas on both ends; fast to Queequeg&apos;s broad canvas bbelt, and fast to my narrow leather one. So that for better of for worse, we teo, for the time, were wedded; and should "
+        android:text="So that for better of for worse, we teo, for the time, were wedded; and should ..."
         android:id="@+id/description"
         android:layout_marginTop="5dp"
         android:layout_below="@+id/textView8"
