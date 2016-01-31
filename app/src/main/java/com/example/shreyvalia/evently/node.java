@@ -1,9 +1,6 @@
 package com.example.shreyvalia.evently;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by Jenna on 1/30/2016.
@@ -57,50 +54,20 @@ public class node {
         this.address = address;
     }
 
-    public void setStartDate(String startDate_time) {//throws ParseException {
+    public void setStartDate_Time(String startDate_time) {
         this.startDate_Time = startDate_time;
-
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
-//
-//        try {
-//            startDate_Time = dateFormat.parse(date_time);
-//        } catch (ParseException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-
     }
 
-    public String getStartDate_Time(){ return startDate_Time;
-//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
-//        return formatter.format(startDate_Time);
+    public String getStartDate_Time(){
+        return startDate_Time;
     }
 
-    public void setEndDate_Time(String endDate_time){ //throws ParseException {
+    public void setEndDate_Time(String endDate_time){
             this.endDate_Time = endDate_time;
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
-//
-//        try {
-//            endDate_Time = dateFormat.parse(date_time);
-//        } catch (ParseException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
-//
-//        try {
-//            endDate_Time = dateFormat.parse(date_time);
-//        } catch (ParseException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//
     }
 
-    public String getEndDate_Time(){ return endDate_Time;
-//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
-//        return formatter.format(endDate_Time);
+    public String getEndDate_Time(){
+        return endDate_Time;
     }
 
 

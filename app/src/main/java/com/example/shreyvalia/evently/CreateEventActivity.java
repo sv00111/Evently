@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.ParseObject;
+
 public class CreateEventActivity extends AppCompatActivity {
 
 
@@ -116,13 +118,17 @@ public class CreateEventActivity extends AppCompatActivity {
 
         EditText startDate = (EditText) findViewById(R.id.txtdate_start);
         String startDateString = startDate.getText().toString();
-        //need to add start time to string
-        String startDateAndTime = startDateString + " "; //add time variable
+        EditText startTime = (EditText) findViewById(R.id.txttime_start);
+        String startTimeString = startTime.getText().toString();
+        String startDateAndTime = startDateString + " " + startTimeString;
+        n.setStartDate_Time(startDateAndTime);
 
         EditText endDate = (EditText) findViewById(R.id.txtdate_end);
         String endDateString = endDate.getText().toString();
-        //need to add end time to string
-        String endDateAndtime = endDateString + " ";//add time variable
+        EditText endTime = (EditText) findViewById(R.id.txttime_end);
+        String endTimeString = endTime.getText().toString();
+        String endDateAndTime = endDateString + " " + endTimeString;
+        n.setEndDate_Time(endDateAndTime);
 
 
         EditText address = (EditText) findViewById(R.id.editText7);
@@ -136,9 +142,27 @@ public class CreateEventActivity extends AppCompatActivity {
         Log.d("Description", n.getDescription());
         Log.d("Max capcityy", String.valueOf(n.getMax()));
         Log.d("Address", n.getAddress());
+        Log.d("start time", n.getStartDate_Time());
+        Log.d("end time", n.getEndDate_Time());
 
+        //Store values in strings
+        String eventTitle = n.getName();
+        String eventDescription = n.getDescription();
+        String eventAddress = n.getAddress();
+        String eventDate = n.getStartDate_Time();
+        System.out.println("Date here:");
+        System.out.println(eventDate);
 
-            MainActivity.references.add(n);
+        //Saving to Parse
+        ParseObject eventObject = new ParseObject("TestObject");
+        eventObject.put("eventTitle", eventTitle);
+        eventObject.put("description", eventDescription);
+        eventObject.put("address", eventAddress);
+        eventObject.put("voteCount", 0);
+        eventObject.put("date", eventDate);
+        eventObject.saveInBackground();
+
+        MainActivity.references.add(n);
         Toast.makeText(getApplicationContext(), "Submit Pressed", Toast.LENGTH_SHORT).show();
         this.finish();
 
