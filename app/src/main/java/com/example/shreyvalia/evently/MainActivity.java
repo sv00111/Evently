@@ -15,12 +15,14 @@ import android.widget.Toast;
 import com.firebase.client.Firebase;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button butt;
+    public static ArrayList<node> references;
+    private Button butt;
 
-    String USERID;
+    private String USERID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -29,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Evennntly");
         setSupportActionBar(toolbar);
+
+
+        references = new ArrayList<node>();
+        references.add(new node("3"));
+        Log.d("main activity", references.get(0).getUserID());
 
         butt = (Button) findViewById(R.id.button);
         butt.setOnClickListener(new MyClass());
