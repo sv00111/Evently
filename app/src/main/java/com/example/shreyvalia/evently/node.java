@@ -26,7 +26,8 @@ public class node {
 
     public node(String userID) {
             this.userID = userID;
-            int rating = 0;
+            this.rating = 0;
+            this.max = 0;
             userIDResponded = new ArrayList<String>();
     }
 

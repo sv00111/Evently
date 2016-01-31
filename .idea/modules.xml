@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Evently.iml" filepath="$PROJECT_DIR$/Evently.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EventlyDa.iml" filepath="$PROJECT_DIR$/EventlyDa.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

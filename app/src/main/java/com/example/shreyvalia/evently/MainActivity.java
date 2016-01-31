@@ -2,20 +2,20 @@ package com.example.shreyvalia.evently;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button butt;
+//    Button butt;
     public static ArrayList<node> references;
     String USERID;
 
@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("Evennntly");
         setSupportActionBar(toolbar);
 
-        butt = (Button) findViewById(R.id.button);
-        butt.setOnClickListener(new MyClass());
+//        butt = (Button) findViewById(R.id.button);
+//        butt.setOnClickListener(new MyClass());
 
         references = new ArrayList<node>();
 //        node n = new node("2");
@@ -49,8 +49,24 @@ public class MainActivity extends AppCompatActivity {
         android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
         Log.d("UNIQUE BABY", android_id);
-        Intent intent = new Intent(getApplicationContext(), SliderActivity.class);
-        startActivity(intent);
+
+        ImageView im = (ImageView) findViewById(R.id.imageView4);
+        im.setImageResource(R.drawable.welcome_screen);
+        new CountDownTimer(3000,1000){
+            @Override
+            public void onTick(long millisUntilFinished){
+
+            }
+
+            @Override
+            public void onFinish(){
+                //set the new Content of your activity
+                Intent intent = new Intent(getApplicationContext(), SliderActivity.class);
+                startActivity(intent);
+            }
+        }.start();
+
+
 
 
 
@@ -80,15 +96,15 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public class MyClass implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), SliderActivity.class);
-            startActivity(intent);
-        }
-
-    }
+//    public class MyClass implements View.OnClickListener {
+//
+//        @Override
+//        public void onClick(View v) {
+//            Intent intent = new Intent(getApplicationContext(), SliderActivity.class);
+//            startActivity(intent);
+//        }
+//
+//    }
 
 
 }
