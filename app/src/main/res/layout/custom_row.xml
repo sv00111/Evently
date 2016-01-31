@@ -3,9 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
-    android:descendantFocusability="blocksDescendants"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp">
+    android:descendantFocusability="blocksDescendants">
 
     <GridLayout
         android:layout_width="match_parent"
@@ -53,8 +51,8 @@
                 android:textColor="@color/black_overlay"/>
 
             <TextView
-                android:layout_width="266dp"
-                android:layout_height="55dp"
+                android:layout_width="284dp"
+                android:layout_height="62dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="description"
                 android:id="@+id/description"
