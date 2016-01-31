@@ -1,11 +1,15 @@
 package com.example.shreyvalia.evently;
 
-import android.app.FragmentTransaction;
-import android.os.Bundle;
+import android.app.DatePickerDialog;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
+
+import java.util.Calendar;
 
 public class CreateEventActivity extends AppCompatActivity {
 
@@ -21,6 +25,7 @@ public class CreateEventActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
+
 
     public void onStart(){
         super.onStart();
@@ -48,4 +53,10 @@ public class CreateEventActivity extends AppCompatActivity {
             }
         });
     }
-}
+
+
+
+
+
+
+    }

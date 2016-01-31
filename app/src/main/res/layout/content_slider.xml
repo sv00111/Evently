@@ -18,5 +18,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/eventList"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:divider="#C2C2C2"
+        android:dividerHeight="1px"/>
 </RelativeLayout>
