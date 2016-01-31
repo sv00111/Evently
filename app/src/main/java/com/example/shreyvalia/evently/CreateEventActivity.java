@@ -1,10 +1,13 @@
 package com.example.shreyvalia.evently;
 
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,11 +23,36 @@ public class CreateEventActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Evenntly");
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+//        getSupportActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+//
+
     }
 
+    public void onBackButton(){
+        AlertDialog aBox = OptionAsk();
+        aBox.show();
+    }
 
+    private AlertDialog OptionAsk(){
+        AlertDialog leaveBox = new AlertDialog.Builder(this)
+                .setTitle("Back")
+                .setMessage("Are you sure you want to cancel?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        return leaveBox;
+    }
     public void onStart() {
         super.onStart();
         EditText txtDate = (EditText) findViewById(R.id.txtdate_start);
@@ -114,6 +142,18 @@ public class CreateEventActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Submit Pressed", Toast.LENGTH_SHORT).show();
         this.finish();
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                //Write your logic here
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
 

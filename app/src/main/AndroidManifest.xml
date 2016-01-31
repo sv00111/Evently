@@ -32,6 +32,7 @@
         <activity android:name=".SliderActivity" />
         <activity
             android:name=".CreateEventActivity"
+            android:parentActivityName=".SliderActivity"
             android:label="title_create_event_activity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

@@ -41,7 +41,7 @@ public class SliderActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CreateEventActivity.class);
+                Intent intent = new Intent(SliderActivity.this, CreateEventActivity.class);
                 startActivity(intent);
             }
         });
