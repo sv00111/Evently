@@ -28,6 +28,7 @@ public class TimeDialog extends DialogFragment implements TimePickerDialog.OnTim
         int am_pm = c.get(Calendar.AM_PM);
 
 
+
 //        if(c.get(Calendar.AM_PM) == Calendar.AM)
 //            am_pm = "AM";
 //        else if (c.get(Calendar.AM_PM) == Calendar.PM)
@@ -57,12 +58,20 @@ public class TimeDialog extends DialogFragment implements TimePickerDialog.OnTim
             hour = hourOfDay;
             am = true;
         }
+        String minFormat = null;
+        if(minute>0 && minute < 10 ){
+            minFormat = String.format("%02d", minute);
+        }
+        else{
+            minFormat = Integer.toString(minute);
+        }
+
         String time = null;
         if (am == true) {
-            time = (hour) + ":" + (minute) + " AM";
+            time = (hour) + ":" + (minFormat) + " AM";
         }
         else {
-            time =  (hour) + ":" + (minute) + " PM";
+            time =  (hour) + ":" + (minFormat) + " PM";
         }
 
         txtTime.setText(time);
