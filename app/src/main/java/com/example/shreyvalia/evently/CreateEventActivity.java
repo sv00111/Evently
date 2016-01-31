@@ -22,9 +22,18 @@ public class CreateEventActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Evenntly");
         setSupportActionBar(toolbar);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
     }
+
+//    private void submit(){
+//
+//        EditText eventName = (EditText)findViewById(R.id.editText2);
+//        eventName.getText();
+//    }
 
 
 
