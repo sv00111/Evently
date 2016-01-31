@@ -1,6 +1,7 @@
 package com.example.shreyvalia.evently;
 
-import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -11,9 +12,12 @@ public class node {
     String description;
     // photos (optional)
     String address;
-    private Date date;
-    private Time sTime;
-    private Time eTime;
+//    private String startDate;
+//    private String endDate;
+//    private String startTime;
+//    private String endTime;
+    private Date startDate_Time; //format is ("dd-MM-yyyy hh:mm:ss a")
+    private Date endDate_Time; //format is ("dd-MM-yyyy hh:mm:ss a")
     private int nAttend;
     private int max;
     private int rating;
@@ -52,29 +56,42 @@ public class node {
         this.address = address;
     }
 
-    public Date getDate() {
-        return this.date;
+    public void setStartDate_Time(String date_time) throws ParseException {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+
+        try {
+            startDate_Time = dateFormat.parse(date_time);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public String getStartDate_Time(){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+        return formatter.format(startDate_Time);
     }
 
-    public Time getsTime() {
-        return this.sTime;
+    public void setEndDate_Time(String date_time) throws ParseException {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+
+        try {
+            endDate_Time = dateFormat.parse(date_time);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
 
-    public void setsTime(Time sTime) {
-        this.sTime = sTime;
+    public String getEndDate_Time(){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+        return formatter.format(endDate_Time);
     }
 
-    public Time geteTime() {
-        return this.eTime;
-    }
-
-    public void seteTime(Time eTime) {
-        this.eTime = eTime;
-    }
 
     public int getnAttend() {
         return this.nAttend;
