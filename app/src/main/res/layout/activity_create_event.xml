@@ -11,38 +11,27 @@
         android:layout_width="match_parent"
         android:theme="@style/AppTheme.AppBarOverlay">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#129DC3" />
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="right">
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageButton"
-            android:src="@mipmap/submit_button"
-            android:background="@android:color/transparent"
-            android:paddingTop="4dp"
-            android:paddingRight="5dp"
-            android:clickable="true"
-            android:scaleType="center" />
-
-    </LinearLayout>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_action_name" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/scrollView"
-        android:paddingTop="90dp">
+        android:paddingTop="90dp"
+        android:fillViewport="false">
 
         <LinearLayout
             android:orientation="vertical"
@@ -111,17 +100,13 @@
                     android:id="@+id/textView5"
                     android:allowUndo="false" />
 
-                <EditText
+                <DatePicker
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txtdate_start"
-                    android:textSize="20sp"
-                    android:hint="Select Date"
-                    android:singleLine="true" />
-
-                    <!--android:calendarViewShown="false"-->
-                    <!--android:datePickerMode="spinner"-->
-                    <!--android:layout_gravity="center_horizontal" />-->
+                    android:id="@+id/datePicker"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner"
+                    android:layout_gravity="center_horizontal" />
 
 
             </LinearLayout>
@@ -167,13 +152,22 @@
                     android:text="END DATE"
                     android:id="@+id/textView15" />
 
-                <EditText
+                <DatePicker
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txtdate_end"
-                    android:textSize="20sp"
-                    android:hint="Select Date"
-                    android:singleLine="true" />
+                    android:id="@+id/datePicker4"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner"
+                    android:layout_gravity="center_horizontal" >
+
+                    <DatePicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/datePicker3"
+                        android:calendarViewShown="false"
+                        android:datePickerMode="spinner"
+                        android:layout_gravity="center_horizontal" />
+                </DatePicker>
 
 
             </LinearLayout>
