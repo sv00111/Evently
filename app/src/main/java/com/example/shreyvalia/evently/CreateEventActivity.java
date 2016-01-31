@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import java.util.Calendar;
 
@@ -26,14 +27,23 @@ public class CreateEventActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        ImageButton button = (ImageButton)findViewById(R.id.imageButton);
+        button.setOnClickListener(new submit());
 
     }
 
-//    private void submit(){
-//
-//        EditText eventName = (EditText)findViewById(R.id.editText2);
-//        eventName.getText();
-//    }
+    public class submit implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            node n = new node("1");
+            EditText eventName = (EditText)findViewById(R.id.editText2);
+            n.setName(eventName.getText().toString());
+            EditText capacity = (EditText)findViewById(R.id.editText3);
+            n.setMax(Integer.parseInt(capacity.getText().toString()));
+
+        }
+    }
 
 
 
