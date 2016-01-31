@@ -88,13 +88,17 @@ public class CreateEventActivity extends AppCompatActivity {
 
         EditText startDate = (EditText) findViewById(R.id.txtdate_start);
         String startDateString = startDate.getText().toString();
-        //need to add start time to string
-        String startDateAndTime = startDateString + " "; //add time variable
+        EditText startTime = (EditText) findViewById(R.id.txttime_start);
+        String startTimeString = startTime.getText().toString();
+        String startDateAndTime = startDateString + " " + startTimeString;
+        n.setStartDate_Time(startDateAndTime);
 
         EditText endDate = (EditText) findViewById(R.id.txtdate_end);
         String endDateString = endDate.getText().toString();
-        //need to add end time to string
-        String endDateAndtime = endDateString + " ";//add time variable
+        EditText endTime = (EditText) findViewById(R.id.txttime_end);
+        String endTimeString = endTime.getText().toString();
+        String endDateAndTime = endDateString + " " + endTimeString;
+        n.setEndDate_Time(endDateAndTime);
 
 
         EditText address = (EditText) findViewById(R.id.editText7);
@@ -108,6 +112,8 @@ public class CreateEventActivity extends AppCompatActivity {
         Log.d("Description", n.getDescription());
         Log.d("Max capcityy", String.valueOf(n.getMax()));
         Log.d("Address", n.getAddress());
+        Log.d("start time", n.getStartDate_Time());
+        Log.d("end time", n.getEndDate_Time());
 
 
             MainActivity.references.add(n);
